@@ -1,0 +1,21 @@
+spring:
+  kafka:
+    bootstrap-servers: "orange-houseboat-01.srvs.cloudkafka.com:9094,orange-houseboat-02.srvs.cloudkafka.com:9094,orange-houseboat-03.srvs.cloudkafka.com:9094"
+    properties:
+      schema.registry.url: "http://localhost:8081"
+      sasl.jaas.config: "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"snowplow\" password=\"6jp88Gq3OEDc7Uxt\";"
+      security:
+        protocol: "SASL_SSL"
+      sasl:
+        mechanism: "SCRAM-SHA-256"
+    consumer:
+      group-id: "snowplow"
+      value-serializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
+
+eventlib:
+  username: "snowplow"
+  password: "6jp88Gq3OEDc7Uxt"
+  schema-registry-url: "http://localhost:8081"
+  bootstrap-servers: "orange-houseboat-01.srvs.cloudkafka.com:9094,orange-houseboat-02.srvs.cloudkafka.com:9094,orange-houseboat-03.srvs.cloudkafka.com:9094"
+  producer: "snowplow-stream-avro"
+  max-block-ms-config: "10000"
